@@ -57,8 +57,9 @@ function make_slides(f) {
       //   exp.go(); //make sure this is at the *end*, after you log your data
       // }
       exp.go(); //use exp.go() if and only if there is no "present" data.
-    },
+    }
   });
+
 
   slides.priming = slide({
     name: "priming",
@@ -72,7 +73,9 @@ function make_slides(f) {
       and for each of these, present_handle will be run.)
       Remember to comment out the other
       specification of present below*/
-    present: _.shuffle([
+
+/*
+    resent: _.shuffle([
       {speaker: "John"},
       {speaker: "Mary"}
     ]),
@@ -85,6 +88,7 @@ function make_slides(f) {
     Remember to comment out the other
     specification of present above*/
     //present: _.shuffle(exp.primingStims),
+
 
     present_handle: function(stim){
 
@@ -123,6 +127,229 @@ function make_slides(f) {
   //     }
   //   },
   // });
+
+  slides.trial = slide({
+     name : "trial",
+     present: exp.all_stims,
+
+     // PRESENT THE SLIDE
+     present_handle: function(stim) {
+       $(".err").hide();
+       this.trial_start = new Date();
+       this.stim = stim;
+       console.log(this.stim);
+       // this.type = stim.title;
+       // this.not_paid_attention = false;
+       $("#audio_player").data("num-plays", 0);
+
+       // console.log("Trial: " + stim.audio);
+       // $("#error_audio").hide();
+       // $("#attention_check").hide();
+       // $("#done_check").hide();
+       // $("#error_check").hide();
+       // $("#perception").hide();
+       // $("#done_percept").hide();
+       // $("#error_percept").hide();
+       // $("#attention_check").data("dont-show", false);
+       // $("input[type=radio]").attr("checked", null);
+       // $("textarea").val("");
+
+       // $("#audio_src_ogg").attr("src", 'audio/'+ stim.audio + '.ogg');
+       $("#audio_src_mp3").attr("src", '../audio/'+ stim.speaker+'_'+stim.word+'_'+stim.length+'.mp3');
+
+
+       $("#audio_player").load();
+       $("#audio_player").trigger("play");
+
+       Adjs = _.shuffle([ ["not feminine", "feminine"], ["not masculine", "masculine"], ["not gay", "gay"],
+    ["not flamboyant", "flamboyant"], ["not intelligent", "intelligent"], ["not sincere", "sincere"],
+    ["not friendly", "friendly"], ["not educated", "educated"]]);
+
+       exp.adjs = Adjs;
+
+       divHtml = "";
+       for (i = 0; i < 8; i++){
+
+         divHtml += '<p>' + Adjs[i][0] +
+         ' <input type="radio" name="' + Adjs[i][1] +
+         '" value="1"> <input type="radio" name="' + Adjs[i][1] +
+         '" value="2"> <input type="radio" name="' + Adjs[i][1] +
+         '" value="3"> <input type="radio" name="' + Adjs[i][1] +
+         '" value="4"> <input type="radio" name="' + Adjs[i][1] +
+         '" value="5"> <input type="radio" name="' + Adjs[i][1] +
+         '" value="6"> <input type="radio" name="' + Adjs[i][1] +
+         '" value="7"> ' + Adjs[i][1] + '</p>';
+
+
+       }
+
+
+       $("#responses").html(divHtml);
+
+
+
+
+
+
+       // $("#radio_label_1").text(this.stim.topics[0]);
+       // $("#radio_label_2").text(this.stim.topics[1]);
+       // $("#radio_label_3").text(this.stim.topics[2]);
+       // $("#radio_label_4").text(this.stim.topics[3]);
+       // $("#radio_label_5").text(this.stim.topics[4]);
+       // $("#radio_label_6").text(this.stim.topics[5]);
+       //
+       //
+       // $("#radio_1").val(this.stim.topics[0]);
+       // $("#radio_2").val(this.stim.topics[1]);
+       // $("#radio_3").val(this.stim.topics[2]);
+       // $("#radio_4").val(this.stim.topics[3]);
+       // $("#radio_5").val(this.stim.topics[4]);
+       // $("#radio_6").val(this.stim.topics[5]);
+
+       //
+       // this.sentences = ["Speaker 2 agrees with Speaker 1","Speaker 2 disagrees with Speaker 1","Speaker 2 likes the " + this.stim.topic,"Speaker 2 dislikes the " + this.stim.topic,"Speaker 2 is happy","Speaker 2 is unhappy"];
+       // this.sentences = _.shuffle([["Speaker 2 disagrees with Speaker 1","Speaker 2 agrees with Speaker 1"],["Speaker 2 dislikes the " + this.stim.topic, "Speaker 2 likes the " + this.stim.topic],["Speaker 2 is unhappy", "Speaker 2 is happy"]]);
+       // var questionhtml = "How "+this.stim.adjective+" does the speaker think their friend is?";
+       // $("#question").html(questionhtml);
+       //
+       // this.sentences = [["disagrees with Speaker 1","agrees with Speaker 1", "agree"],["dislikes the " + this.stim.adjective, "likes the " + this.stim.adjective, "like"]];
+       // this.n_sliders = this.sentences.length;
+       // // this.shuffled_sentences = exp.shuffled_sentences;
+       // $(".slider_row").remove();
+       // for (var i=0; i<this.n_sliders; i++) {
+       //   var sentence_left = this.sentences[0];
+       //   var sentence_right = this.sentences[1];
+       //   $("#multi_slider_table").append('<tr class="slider_row"><td class="slider_target_left" id="sentence_left' + i + '">' + sentence_left + '</td><td colspan="2"><div id="slider' + i + '" class="slider"><td class="slider_target_right" id="sentence_right' + i + '">' + sentence_right + '</td>-------[ ]--------</div></td></tr>');
+       //   utils.match_row_height("#multi_slider_table", ".slider_target");
+       // }
+       //
+       // this.init_sliders(this.sentences);
+       // exp.sliderPost = [];
+
+
+     },
+
+
+
+     //
+     // init_sliders : function(sentence_types) {
+     //   for (var i=0; i<sentence_types.length; i++) {
+     //     var sentence_type = sentence_types[i];
+     //     utils.make_slider("#slider" + i, this.make_slider_callback(i));
+     //   }
+     // },
+     //
+     // make_slider_callback : function(i) {
+     //   return function(event, ui) {
+     //     exp.sliderPost[i] = ui.value;
+     //
+     //   };
+     // },
+
+
+
+     // //FIRST BUTTON
+     // button_audio : function() {
+     //   $("#attention_check").show();
+     //   $("#done_check").show();
+     //   $("#done_audio").hide();
+     // },
+
+     // //SECOND BUTTON: CHECK THAT THEY SELECT THE CORRECT ATTENTION CHECK ANSWER
+     // button_check : function() {
+       // function check_check(){
+       // var checked_radio  = $('input[name="audio"]:checked');
+
+       //this.response  = true;
+       // if (checked_radio == undefined  || checked_radio.val() != this.stim.topic) {
+      //if (this.response == false) {
+         // $("#error_check").show();
+         // if (checked_radio.val() != this.stim.topic) {
+           // this.not_paid_attention = true;
+         // }
+       // } else {
+         // this.pre_check_response = checked_radio.val();
+     //     $("#perception").show();
+     //     $("#done_percept").show();
+     //     $("#done_check").hide();
+     //     $("#error_check").hide();
+     //     $("#attention_check").hide();
+     //     $("#attention_check").data("dont-show", true);
+     //
+     //   // };
+     // },
+
+     // //THIRD BUTTON: CHECK THAT THEY MOVED ALL SLIDERS
+     button_percept : function() {
+       // function check_percept(){
+         // this.response = $('input[name="audio"]:checked').val();
+         all_checked = true;
+         exp.responses = {};
+         for (i = 0; i < 8; i++){
+           exp.responses[exp.adjs[i][1]] =
+           $('input[name=' + exp.adjs[i][1] + ']:checked').val();
+           if (exp.responses[exp.adjs[i][1]] == null) {
+             all_checked = false;
+           }
+         }
+
+         exp.attentionResponse = $('input[name=attention]:checked').val();
+
+
+         // verify the response
+         if (!all_checked || exp.attentionResponse == null) {
+           $(".err").show();
+         } else {
+           this.log_responses();
+
+           /* use _stream.apply(this); if and only if there is
+           "present" data. (and only *after* responses are logged) */
+           _stream.apply(this);
+         }
+
+
+       // for (var i = 0; i < this.n_sliders; i++) {
+       //   if ($("#slider" + i).slider("option", "value") < -0.1) {
+       //     $("#error_percept").show();
+       //     return;
+       //   } else {
+       //     this.responses.push([$("#slider" + i).slider("option", "value"), this.sentences[i][2]]);
+       //   }
+       // }
+
+       // var text_field = $("#story-input").val();
+
+       // this.open_answer = $("#other_percept").val();
+       // this.responses.push([this.open_answer, "open_answer"]);
+
+
+     },
+
+     log_responses : function() {
+
+       var resp = {
+           "sentence": this.stim.sentence,
+           "length": this.stim.length,
+           "speaker": this.stim.speaker,
+           "time": (new Date()) - this.trial_start,
+           "num_plays": $("#audio_player").data("num-plays"),
+           "attention":  exp.attentionResponse
+         };
+
+      for (i = 0; i < 8; i++){
+           resp[exp.adjs[i][1]] = exp.responses[exp.adjs[i][1]];
+      }
+       //
+       // for (var i = 0; i < this.responses.length; i++) {
+       //   var x = this.responses[i];
+       //   resp[x[1]] = x[0];
+       // }
+
+       exp.data_trials.push(resp);
+     }
+
+   });
+
 
   slides.critical = slide({
     name : "critical",
@@ -417,12 +644,34 @@ function make_slides(f) {
   return slides;
 }
 
+function makeStim(stim) {
+  var lengthcondition = _.shuffle(["shortened","lengthened"])[0];
+  var speaker = _.shuffle(["Lewis","Scott","CJ","Brandon"])[0];
+  var word = _.shuffle(["after","often"])[0];
+
+
+  var onestim = stim;
+  onestim.length = lengthcondition;
+  onestim.speaker = speaker;
+  onestim.word = word;
+
+  exp.all_stims.push(onestim);
+}
 /// init ///
 function init() {
+  // console.log(stimuli);
+  exp.all_stims = [];
+
+  makeStim(_.shuffle(stimuli)[0]);
+
+  console.log(exp.all_stims);
+  // var length_conditions = ["lengthened","shortened"];
+  // var valence_conditions = ["negative"];
+  // var valence_conditions = ["positive","negative"];
   //specify conditions
   exp.condition = _.sample(["comparatives", "multiple negations"]); //can randomize between subject conditions here
   //blocks of the experiment:
-  exp.structure=["i0", "consent", "instructions", "example", "priming", "critical", 'subj_info', 'thanks'];
+  exp.structure=["i0", "consent", "instructions","trial", 'subj_info', 'thanks'];
 
   exp.primingStims = {"comparatives": ["John ate more food than this burger.",
                               "Mary had more pets than Fido."],

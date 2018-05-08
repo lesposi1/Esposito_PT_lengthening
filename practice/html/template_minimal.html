@@ -29,8 +29,9 @@
   <!--Shared set-up ends-->
 
   <!--Things specific to this experiment need to be changed-->
-    <title>Minimalist Syntactician experiment</title>
+    <title>Voice perception</title>
     <script src="../js/template_minimal.js"></script>
+    <script src="../js/stimuli.js"></script>
     <link href="../css/local-style.css" rel="stylesheet" type="text/css"/>
     <!-- experiment specific helper functions -->
     <!-- <script src="../js/local-utils.js"></script> -->
@@ -90,17 +91,11 @@
 <!--Instruction slide-->
 <div class="slide" id="instructions">
   <h3>Instructions</h3>
-  <p>You will read a few English sentences
-    and for each sentence you
-    will be asked whether it is grammatical
-    (in the sense of Chomsky 1957).</p>
-  <p>Here is a grammatical sentence:<br />
-    "Colorless green ideas sleep furiously"</p>
-  <p>And here is an ungrammatical sentence:<br />
-      "Furiously sleep ideas green colorless"</p>
+  <p>You will listen to a single audio clip randomly selected from a conversation and describe the speaker based on his vocie. </p>
   <button onclick="_s.button()">Continue</button>
 </div>
 
+<!--
   <div class="slide" id="example">
     <p>Here is a concrete example to familiarize you with the task.</p>
 
@@ -118,7 +113,7 @@
       <p id="primingSentence">{{}}</p>
       <button onclick="_s.button()">Continue</button>
   </div>
-
+-->
 
 <!--
   <div class="slide" id="forcedChoice">
@@ -130,7 +125,172 @@
   </div>
 -->
 
-<div class="slide" id="critical">
+
+<div class="slide" id="trial">
+  <p>Click the triangle to re-play the clip. You may listen to it as many times as you like. This clip was randomly selected from a conversation.</p>
+  <div id="audio_container">
+    <audio controls id="audio_player">
+
+        <!-- <source src="" id="audio_src_ogg" type="audio/ogg">  -->
+        <source src="" id="audio_src_mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+      </audio>
+  </div>
+
+
+  <p>Rate the speaker along the following descriptors based on how he talks.</p>
+
+
+&nbsp
+
+  <div id="responses">
+
+
+  <p> <span id="adj1Neg">not sincere</span>
+  <input type="radio" name="adj1" value="1">
+  <input type="radio" name="adj1" value="2">
+  <input type="radio" name="adj1" value="3">
+  <input type="radio" name="adj1" value="4">
+  <input type="radio" name="adj1" value="5">
+  <input type="radio" name="adj1" value="6">
+  <input type="radio" name="adj1" value="7">
+  <span id="adj1Pos">sincere</span>
+  </p>
+
+
+  <p> <span id="adj2Neg">not intelligent</span>
+  <input type="radio" name="adj2" value="1">
+  <input type="radio" name="adj2" value="2">
+  <input type="radio" name="adj2" value="3">
+  <input type="radio" name="adj2" value="4">
+  <input type="radio" name="adj2" value="5">
+  <input type="radio" name="adj2" value="6">
+  <input type="radio" name="adj2" value="7">
+
+  <span id="adj2Pos">intelligent</span>
+  </p>
+
+
+  <p> <span id="adj3Neg">not gay</span>
+  <input type="radio" name="adj2" value="1">
+  <input type="radio" name="adj2" value="2">
+  <input type="radio" name="adj2" value="3">
+  <input type="radio" name="adj2" value="4">
+  <input type="radio" name="adj2" value="5">
+  <input type="radio" name="adj2" value="6">
+  <input type="radio" name="adj2" value="7">
+
+  <span id="adj3Pos">gay</span>
+  </p>
+
+
+  <p> <span id="adj4Neg">not friendly</span>
+  <input type="radio" name="adj2" value="1">
+  <input type="radio" name="adj2" value="2">
+  <input type="radio" name="adj2" value="3">
+  <input type="radio" name="adj2" value="4">
+  <input type="radio" name="adj2" value="5">
+  <input type="radio" name="adj2" value="6">
+  <input type="radio" name="adj2" value="7">
+
+  <span id="adj4Pos">friendly</span>
+  </p>
+
+
+
+
+
+  <p> <span id="adj5Neg">not masculine</span>
+  <input type="radio" name="adj2" value="1">
+  <input type="radio" name="adj2" value="2">
+  <input type="radio" name="adj2" value="3">
+  <input type="radio" name="adj2" value="4">
+  <input type="radio" name="adj2" value="5">
+  <input type="radio" name="adj2" value="6">
+  <input type="radio" name="adj2" value="7">
+  <span id="adj5Pos">masculine</span>
+  </p>
+
+
+  <p> <span id="adj6Neg">not flamboyant</span>
+  <input type="radio" name="adj2" value="1">
+  <input type="radio" name="adj2" value="2">
+  <input type="radio" name="adj2" value="3">
+  <input type="radio" name="adj2" value="4">
+  <input type="radio" name="adj2" value="5">
+  <input type="radio" name="adj2" value="6">
+  <input type="radio" name="adj2" value="7">
+  <span id="adj6Pos">flamboyant</span>
+  </p>
+
+  <p> <span id="adj7Neg">not feminine</span>
+  <input type="radio" name="adj2" value="1">
+  <input type="radio" name="adj2" value="2">
+  <input type="radio" name="adj2" value="3">
+  <input type="radio" name="adj2" value="4">
+  <input type="radio" name="adj2" value="5">
+  <input type="radio" name="adj2" value="6">
+  <input type="radio" name="adj2" value="7">
+  <span id="adj7Pos">feminine</span>
+  </p>
+
+
+  <p> <span id="adj8Neg">not educated</span>
+  <input type="radio" name="adj2" value="1">
+  <input type="radio" name="adj2" value="2">
+  <input type="radio" name="adj2" value="3">
+  <input type="radio" name="adj2" value="4">
+  <input type="radio" name="adj2" value="5">
+  <input type="radio" name="adj2" value="6">
+  <input type="radio" name="adj2" value="7">
+  <span id="adj8Pos">educated</span>
+  </p>
+</div>
+  <!--
+
+
+
+    <div class="slide" id="attention_check"> -->
+<p>What did the speaker say?</p>
+<input type="radio" name="attention" value="I like travelling.">I like travelling.<BR>
+<input type="radio" name="attention" value="Pizza is my favorite food.">Pizza is my favorite food.<BR>
+<input type="radio" name="attention" value="Let's go to the beach.">Let's go to the beach.<BR>
+<input type="radio" name="attention" value="None of these.">He said none of these.<BR>
+
+
+  <p><button id="done_percept" onclick="_s.button_percept()">Continue</button></p>
+  <!-- <div id="attention_check">
+    <p>What was this interaction about?</p>
+    <p id="attention_fill">
+      <label><input id="radio_1" type="radio"  name="audio" value="xyz"/><span id="radio_label_1">{{}}</span></label>
+      <label><input id="radio_2" type="radio"  name="audio" value="xyz"/><span id="radio_label_2">{{}}</span></label>
+      <br>
+      <label><input id="radio_3" type="radio"  name="audio" value="xyz"/><span id="radio_label_3">{{}}</span></label>
+      <label><input id="radio_4" type="radio"  name="audio" value="xyz"/><span id="radio_label_4">{{}}</span></label>
+      <br>
+      <label><input id="radio_5" type="radio"  name="audio" value="xyz"/><span id="radio_label_5">{{}}</span></label>
+      <label><input id="radio_6" type="radio"  name="audio" value="xyz"/><span id="radio_label_6">{{}}</span></label>
+    </p>
+  </div>  -->
+
+  <!-- <p><button id="done_check" onclick="_s.button_check()">Continue</button></p>
+  <p id="error_check">Please relisten to the audio and select the correct response. Failing this question multiple times will disqualify you from this study.</p> -->
+
+  <!-- <div id="perception">
+    <p id="question">{{}}</p>
+    <table id="multi_slider_table" class="slider_table">
+    <tr><td></td><td class="left">not at all</td><td class="right">very much</td></tr>
+    <tr><td colspan="2"><div id="multi_slider" class="slider"></div></td></tr>
+    </table>
+  </div>-->
+
+  <p id="error_percept" class="err">Please answer all the questions.</p>
+</div>
+
+
+
+
+<!-- <div class="slide" id="critical">
   <p id="criticalSentence"></p>
 
   <input type="radio" name="criticalChoice" value="grammatical"> Grammatical
@@ -138,7 +298,7 @@
 
   <button onclick="_s.button()">Continue</button>
   <div class="err">Please select one of the options.</div>
-</div>
+</div> -->
 
 <!--  <div class="slide" id="critical">
     <p>Here is one slider. For every trial in this block, you get an input to the 'present_handle' function. You can use that variable to display different prompts:</p>
@@ -196,7 +356,7 @@
       <textarea id="fairprice" rows="1" cols="10"></textarea>
 
       <p>Gender:
-        <select id="gender">
+        <select id="gender" >
           <label><option value=""/></label>
           <label><option value="Male"/>Male</label>
           <label><option value="Female"/>Female</label>
@@ -204,10 +364,10 @@
         </select>
       </p>
 
-      <p>Age: <input type="text" id="age"/></p>
+      <p>Age: <input type="text" id="age" /></p>
 
       <p>Level Of Education:
-        <select id="education">
+        <select id="education" >
           <label><option value="-1"/></label>
           <label><option value="0"/>Some High School</label>
           <label><option value="1"/>Graduated High School</label>
@@ -217,7 +377,7 @@
         </select>
       </p>
 
-      <p>Native Language: <input type="text" id="language"/></p>
+      <p>Native Language: <input type="text" id="language" /></p>
       <label>(the language(s) spoken at home when you were a child)</label>
 
       <p>Did you enjoy the hit?</p>
@@ -248,5 +408,5 @@
     </div>
   </div>
 
-</body>sp
+</body>
 </html>
