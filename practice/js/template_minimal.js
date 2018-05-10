@@ -328,7 +328,7 @@ function make_slides(f) {
      log_responses : function() {
 
        var resp = {
-           "sentence": this.stim.sentence,
+         "word": this.stim.word,
            "length": this.stim.length,
            "speaker": this.stim.speaker,
            "time": (new Date()) - this.trial_start,
@@ -647,7 +647,7 @@ function make_slides(f) {
 function makeStim(stim) {
   var lengthcondition = _.shuffle(["shortened","lengthened"])[0];
   var speaker = _.shuffle(["Lewis","Scott","CJ","Brandon"])[0];
-  var word = _.shuffle(["after","often"])[0];
+  var word = _.shuffle(["after","often","bottle","pocket"])[0];
 
 
   var onestim = stim;

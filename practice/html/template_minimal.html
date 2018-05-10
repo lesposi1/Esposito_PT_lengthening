@@ -48,7 +48,7 @@
   the experiment-->
   <div class="slide" id="i0" >
     <p id="cocolab">Stanford Linguistics</p>
-    <p id="instruct-text">You will read some sentences and be asked some questions about how they sound. The HIT should take ~2 minutes. Please pay attention, thanks!</p>
+    <p id="instruct-text">You will listen to a 2-3 second audio clip randomly selected from a spoken conversation and describe the speaker.</p>
     <button id="start_button" type="button">Start Experiment</button>
   </div>
 
@@ -91,7 +91,7 @@
 <!--Instruction slide-->
 <div class="slide" id="instructions">
   <h3>Instructions</h3>
-  <p>You will listen to a single audio clip randomly selected from a conversation and describe the speaker based on his vocie. </p>
+  <p>You will listen to a male voice randomly selected from a spoken conversation. You will then describe the speaker with a list of provided adjectives based on <b>how</b> he talks. Make sure your computer's volume is turned on. </p>
   <button onclick="_s.button()">Continue</button>
 </div>
 
@@ -127,7 +127,7 @@
 
 
 <div class="slide" id="trial">
-  <p>Click the triangle to re-play the clip. You may listen to it as many times as you like. This clip was randomly selected from a conversation.</p>
+  <p>Click the triangle to replay the clip if you need to relisten it. You may listen to it as many times as you like.</p>
   <div id="audio_container">
     <audio controls id="audio_player">
 
@@ -138,7 +138,7 @@
   </div>
 
 
-  <p>Rate the speaker along the following descriptors based on how he talks.</p>
+  <p>Rate the speaker along the following descriptors based on <b>how</b> he talks.</p>
 
 
 &nbsp
@@ -250,7 +250,10 @@
 
 
 
+
     <div class="slide" id="attention_check"> -->
+
+    &nbsp
 <p>What did the speaker say?</p>
 <input type="radio" name="attention" value="I like travelling.">I like travelling.<BR>
 <input type="radio" name="attention" value="Pizza is my favorite food.">Pizza is my favorite food.<BR>
