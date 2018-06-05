@@ -155,7 +155,7 @@ function make_slides(f) {
        // $("textarea").val("");
 
        // $("#audio_src_ogg").attr("src", 'audio/'+ stim.audio + '.ogg');
-       $("#audio_src_mp3").attr("src", '../audio_new/'+ stim.speaker+'_'+stim.word+'_'+stim.length+'.mp3');
+       $("#audio_src_mp3").attr("src", '../male_median/'+ stim.speaker+'_'+stim.word+'_'+stim.length+'.mp3');
 
 
        $("#audio_player").load();
@@ -646,7 +646,7 @@ function make_slides(f) {
 
 function makeStim(stim) {
   var lengthcondition = _.shuffle(["shortened","lengthened","median"])[0];
-  var speaker = _.shuffle(["Lewis","Scott","CJ","Brandon"])[0];
+  var speaker = _.shuffle(["Brandon"])[0];
   var word = _.shuffle(["after","often","bottle"])[0];
 
 
