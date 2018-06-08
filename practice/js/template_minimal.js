@@ -155,13 +155,13 @@ function make_slides(f) {
        // $("textarea").val("");
 
        // $("#audio_src_ogg").attr("src", 'audio/'+ stim.audio + '.ogg');
-       $("#audio_src_mp3").attr("src", '../male_median/'+ stim.speaker+'_'+stim.word+'_'+stim.length+'.mp3');
+       $("#audio_src_mp3").attr("src", '../women_audio/'+ stim.speaker+'_'+stim.word+'_'+stim.length+'.mp3');
 
 
        $("#audio_player").load();
        $("#audio_player").trigger("play");
 
-       Adjs = _.shuffle([ ["not feminine", "feminine"], ["not masculine", "masculine"], ["not gay", "gay"],
+       Adjs = _.shuffle([ ["not feminine", "feminine"], ["not masculine", "masculine"], ["not lesbian", "lesbian"],
     ["not flamboyant", "flamboyant"], ["not intelligent", "intelligent"], ["not emotive", "emotive"],
     ["not friendly", "friendly"], ["not young", "young"]]);
 
@@ -646,7 +646,7 @@ function make_slides(f) {
 
 function makeStim(stim) {
   var lengthcondition = _.shuffle(["shortened","lengthened","median"])[0];
-  var speaker = _.shuffle(["Brandon"])[0];
+  var speaker = _.shuffle(["Lizzie", "Alma", "Lelia", "Bonnie"])[0];
   var word = _.shuffle(["after","often","bottle"])[0];
 
 
